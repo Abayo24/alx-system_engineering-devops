@@ -3,7 +3,7 @@
 
 counter=1
 
-while (($counter <= 20)); do
+while ((counter <= 20)); do
     case $counter in
         4)
             echo $counter
