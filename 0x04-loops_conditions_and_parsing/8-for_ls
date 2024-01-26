@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script displays alist of content in the current directort
+
+for file in *; do
+	if [ -f "$file" ]; then
+		fname=$(echo "$file" | cut -d'-' -f2-)
+		echo "$fname"
+	fi
+done
