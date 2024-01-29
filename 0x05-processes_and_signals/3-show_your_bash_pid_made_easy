@@ -4,6 +4,6 @@
 pids=$(pgrep -f bash)
 
 for pid in $pids; do
-	pname=$(cat /proc/$pid/cmdline | tr '\0' ' ')
+	pname=$(tr '\0' ' ' < "/proc/$pid/cmdline")
 	echo "$pid $pname"
 done
