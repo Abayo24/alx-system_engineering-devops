@@ -3,5 +3,5 @@
 # Ensure python3-pip is installed
 package { 'Flask':
   ensure   => '2.1.0',
-  provider => 'pip'
+  provider => 'pip3'
   }
