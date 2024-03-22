@@ -6,4 +6,3 @@ exec { 'killmenow_process':
   path        => ['/usr/bin', '/bin'],  # Add appropriate paths if needed
   refreshonly => true,  # Run only when triggered
 }
-
