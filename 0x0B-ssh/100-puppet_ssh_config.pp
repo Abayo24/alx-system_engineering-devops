@@ -9,4 +9,5 @@ file { 'etc/ssh/ssh_config':
 		host*
 		IdntityFile ~/.ssh/school
 		PasswordAuthentication no
+		",
      }
