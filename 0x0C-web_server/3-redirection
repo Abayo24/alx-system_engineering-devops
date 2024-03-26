@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# redirection of /redirect_me to another page
+
+# Replace the default configuration in the Nginx configuration file
+sed -i '/location \/ {/a \
+    location /redirect_me { \
+        return 301 https://www.example.com/new_page; \
+    }' /etc/nginx/sites-available/default
+
+# Test Nginx configuration
+nginx -t
+
+# Reload Nginx to apply changes
+service nginx reload
