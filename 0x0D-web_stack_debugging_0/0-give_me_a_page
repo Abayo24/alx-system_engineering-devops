@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# command(s) you used to fix the issue in my answer file
+
+ServerName localhost
+service apache2 restart
