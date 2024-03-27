@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 # command(s) you used to fix the issue in my answer file
 
-ServerName localhost
+docker exec -it c65d7dae8398c44ed3664ea0bcaeb4db90b1f250f51b4775d8e69baeb24858d6 /bin/bash
+service apache2 status
+service apache2 start
+cd /var/www/html
+echo "Hello Holberton" > index.html
 service apache2 restart
+vi /etc/apache2/apache2.conf
+ServerName localhost
+curl 0:8080
