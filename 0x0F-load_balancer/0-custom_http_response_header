@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 # configure web-02 to be identical to web-01
 
-apt-get update
-apt-get install nginx -y
+sudo apt-get update
+sudo apt-get install -y nginx
 
-tee /etc/nginx/sites-available/default >/dev/null <<EOF
-server {
-	listen 80;
-	listen [::]:80 default_server;
-	root /var/www/html;
-	server_name _;
-        add_header X-Served-By "${HOSTNAME}";
-	location / {
-		try_files $uri $uri/ =404;
-	}
-}
-EOF
-service nginx restart
-	
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+new_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/Abayo24 permanent;"
+sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
+
+sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-enabled/default
+
+sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+
+sudo nginx -t
+
+sudo service nginx restart
