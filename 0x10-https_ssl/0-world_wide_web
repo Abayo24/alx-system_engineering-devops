@@ -5,7 +5,7 @@ display_info() {
     local subdomain=$1
     local domain=$2
 
-    dig_output=$(dig $subdomain.$domain | awk '/ANSWER SECTION/{getline; print}')
+    dig_output=$(dig "$subdomain"."$domain" | awk '/ANSWER SECTION/{getline; print}')
     record_type=$(echo "$dig_output" | awk '{print $4}')
     destination=$(echo "$dig_output" | awk '{print $5}')
 
