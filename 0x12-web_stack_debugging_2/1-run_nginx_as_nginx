@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # script that runs nginx user as nginx and listens to all active IPs on port 8080.
 
-id -u nginx &>/dev/null || useradd -r -s /bin/false nginx
-
 sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
+chmod 644 /etc/nginx/nginx.conf
 
 sed -i 's/listen 80;/listen 8080;/' /etc/nginx/sites-available/default
 sed -i 's/listen \[::\]:80;/listen [::]:8080;/' /etc/nginx/sites-available/default
@@ -11,5 +10,7 @@ sed -i 's/listen \[::\]:80;/listen [::]:8080;/' /etc/nginx/sites-available/defau
 chown -R nginx:nginx /var/log/nginx
 chown -R nginx:nginx /var/lib/nginx
 chown -R nginx:nginx /etc/nginx
+
+pkill apache2
 
 service restart nginx
