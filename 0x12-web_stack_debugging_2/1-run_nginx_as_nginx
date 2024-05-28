@@ -12,4 +12,4 @@ chown -R nginx:nginx /var/log/nginx
 chown -R nginx:nginx /var/lib/nginx
 chown -R nginx:nginx /etc/nginx
 
-systemctl restart nginx
+service restart nginx
