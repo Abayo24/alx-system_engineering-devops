@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # script that runs nginx user and listens to all active IPs.
 
-apt-get update
-apt-get install -y nginx
+sudo service nginx start
 
 sed -i 's/user www-data;/user nginx;/' /etc/nginx/nginx.conf
 
