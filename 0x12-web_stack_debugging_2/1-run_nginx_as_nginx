@@ -7,10 +7,8 @@ chmod 644 /etc/nginx/nginx.conf
 sed -i 's/listen 80;/listen 8080;/' /etc/nginx/sites-available/default
 sed -i 's/listen \[::\]:80;/listen [::]:8080;/' /etc/nginx/sites-available/default
 
-chown -R nginx:nginx /var/log/nginx
-chown -R nginx:nginx /var/lib/nginx
-chown -R nginx:nginx /etc/nginx
+chown -R nginx:nginx /etc/nginx.conf
 
 pkill apache2
 
-service restart nginx
+sudo -u nginx service nginx restart
