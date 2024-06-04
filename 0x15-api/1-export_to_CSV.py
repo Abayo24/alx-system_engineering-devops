@@ -20,7 +20,7 @@ def export_to_csv(employee_id):
     user_response = requests.get(user_url).json()
     todos_response = requests.get(todos_url).json()
 
-    employee_name = user_response.get('name')
+    employee_name = user_response.get('username')
     user_id = user_response.get('id')
 
     filename = f"{user_id}.csv"
