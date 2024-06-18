@@ -10,7 +10,7 @@ def top_ten(subreddit):
     hot posts listed for a given subreddit.
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'User-Agent': 'custom user agent'}
+    headers = {'User-Agent': 'my-app/0.0.2'}
     params = {'limit': 10}
 
     try:

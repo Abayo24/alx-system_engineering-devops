@@ -11,7 +11,7 @@ def count_words(subreddit, word_list, hot_list=[], after=None):
     all hot articles, and prints a sorted count of given keywords
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {'User-Agent': 'custom user agent'}
+    headers = {'User-Agent': 'my-app/0.0.4'}
     params = {'limit': 100, 'after': after}
 
     word_count = defaultdict(int)
