@@ -1,27 +1,7 @@
 # 0-strace_is_your_friend.pp
-# Puppet manifest to install Apache, PHP, and WordPress
+# fixes bad extension in wp_settings.php
 
-class { 'apache': }
-
-class { 'apache::mod::php': }
-
-package { 'wordpress':
-  ensure => present,
+exec{'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path => '/usr/local/bin/:/bin/'
 }
-
-file { '/var/www/html/index.html':
-  ensure  => file,
-  content => '<html>
-<head>
-    <title>Holberton &#8211; Just another WordPress site</title>
-</head>
-<body>
-    <h1>Holberton</h1>
-    <p>Yet another bug by a Holberton student</p>
-</body>
-</html>',
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0644',
-}
-
