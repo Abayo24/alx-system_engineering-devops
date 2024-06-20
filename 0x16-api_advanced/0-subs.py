@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     queries the Reddit API and returns the number of subscribers
     for a given subreddit
     """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    url = f"https://www.reddit.com/r/{subreddit}/about.json".format(subreddit)
     headers = {'User-Agent': 'my-app/0.0.1'}
 
     try:
