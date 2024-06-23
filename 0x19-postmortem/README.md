@@ -61,5 +61,3 @@
    - Schedule regular checks of critical configurations to ensure everything is healthy.
 
 Taking these measures will not only put out fires but also make your house fireproof. Cheers to a more resilient API service!
-
-![API Meltdown](https://example.com/funny-api-meltdown.png)
